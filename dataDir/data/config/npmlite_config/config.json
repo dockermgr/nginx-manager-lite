@@ -5,5 +5,5 @@
 
   "enable_rest_api": true,
   "api_key": "supersecure_api_key",
-  "multi_user_api": true
+  "multi_user_api": false
 }
