@@ -1,9 +1,9 @@
 {
-    "enable_web_portal": true,
-    "jwt_secret_key": "super_secret_key",
-    "JWT_COOKIE_SECURE": false,
+  "enable_web_portal": true,
+  "jwt_secret_key": "super_secret_key",
+  "JWT_COOKIE_SECURE": false,
 
-    "enable_rest_api": true,
-    "api_key": "supersecure_api_key",
-    "multi_user_api": false
+  "enable_rest_api": true,
+  "api_key": "supersecure_api_key",
+  "multi_user_api": true
 }
