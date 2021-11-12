@@ -107,9 +107,6 @@ dockermgr_run_init
 # Ensure directories exist
 ensure_dirs
 ensure_perms
-mkdir -p "$DATADIR/data"
-mkdir -p "$DATADIR/config"
-chmod -Rf 777 "$APPDIR"
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Clone/update the repo
@@ -131,6 +128,9 @@ if [[ -d "$INSTDIR/dataDir" ]] && [[ ! -f "$DATADIR/.installed" ]]; then
   cp -Rf "$INSTDIR/dataDir/." "$DATADIR/"
   touch "$DATADIR/.installed"
   find "$DATADIR" -name ".gitkeep" -type f -exec rm -rf {} \; &>/dev/null
+  mkdir -p "$DATADIR/data"
+  mkdir -p "$DATADIR/config"
+  chmod -Rf 777 "$APPDIR"
 fi
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Main progam
