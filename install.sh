@@ -152,13 +152,11 @@ else
     --restart=unless-stopped \
     --privileged \
     -e TZ="$SERVER_TIMEZONE" \
-    -e DISABLE_IPV6=$SERVER_DISABLE_IPV6 \
     -v "$DATADIR/data":/data \
     -v "$DATADIR/config":/app/config \
     -v "$DATADIR/letsencrypt":/etc/letsencrypt \
     -p $SERVER_PORT:$SERVER_PORT_INT \
     -p $SERVER_PORT_OTHER:$SERVER_PORT_OTHER_INT \
-    -p $SERVER_PORT_ADMIN:$SERVER_PORT_ADMIN_INT \
     "$HUB_URL" &>/dev/null
 fi
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
