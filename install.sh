@@ -57,7 +57,7 @@ REPO_BRANCH="${GIT_REPO_BRANCH:-master}"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Defaults
 APPNAME="nginx-manager-lite"
-APPDIR="$HOME/.local/share/srv/docker/$APPNAME"
+APPDIR="$HOME/.local/share/srv/docker/nginx-manager-lite"
 DATADIR="$HOME/.local/share/srv/docker/nginx-manager-lite/files"
 INSTDIR="$HOME/.local/share/dockermgr/nginx-manager-lite"
 REPO="${DOCKERMGRREPO:-https://github.com/dockermgr}/nginx-manager-lite"
@@ -65,7 +65,7 @@ REPORAW="$REPO/raw/$REPO_BRANCH"
 APPVERSION="$(__appversion "$REPORAW/version.txt")"
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Setup plugins
-HUB_URL="mrsajjal/npmlite"
+HUB_URL="jc21/nginx-proxy-manager:2"
 NGINX_HTTP="${NGINX_HTTP:-80}"
 NGINX_HTTPS="${NGINX_HTTPS:-443}"
 SERVER_IP="${CURRIP4:-127.0.0.1}"
@@ -73,8 +73,8 @@ SERVER_LISTEN="${SERVER_LISTEN:-$SERVER_IP}"
 SERVER_HOST="${APPNAME}.$(hostname -d 2>/dev/null | grep '^' || echo local)"
 SERVER_PORT="${SERVER_PORT:-80}"
 SERVER_PORT_INT="${SERVER_PORT_INT:-80}"
-SERVER_PORT_ADMIN="${SERVER_PORT_ADMIN:-8849}"
-SERVER_PORT_ADMIN_INT="${SERVER_PORT_ADMIN_INT:-81}"
+SERVER_PORT_ADMIN="${SERVER_PORT_ADMIN:-}"
+SERVER_PORT_ADMIN_INT="${SERVER_PORT_ADMIN_INT:-}"
 SERVER_PORT_OTHER="${SERVER_PORT_OTHER:-443}"
 SERVER_PORT_OTHER_INT="${SERVER_PORT_OTHER_INT:-443}"
 SERVER_TIMEZONE="${TZ:-${TIMEZONE:-America/New_York}}"
@@ -154,7 +154,7 @@ else
     -e TZ="$SERVER_TIMEZONE" \
     -e DISABLE_IPV6=$SERVER_DISABLE_IPV6 \
     -v "$DATADIR/data":/data \
-    -v "$DATADIR/config":/data/config \
+    -v "$DATADIR/config":/app/config \
     -v "$DATADIR/letsencrypt":/etc/letsencrypt \
     -p $SERVER_PORT:$SERVER_PORT_INT \
     -p $SERVER_PORT_OTHER:$SERVER_PORT_OTHER_INT \
@@ -214,8 +214,8 @@ if docker ps -a | grep -qs "$APPNAME"; then
   [[ -n "$SERVER_PORT" ]] && printf_blue "HTTP is available at: http://$SERVER_HOST:$SERVER_PORT"
   [[ -n "$SERVER_PORT" ]] && printf_blue "HTTPS is available at: https://$SERVER_HOST:$SERVER_PORT_OTHER"
   [[ -n "$SERVER_PORT" ]] && printf_blue "Admin is available at: http://$SERVER_HOST:$SERVER_PORT_ADMIN"
-  [[ -n "$SERVER_PORT" ]] && printf_yellow "Email: admin@example.com"
-  [[ -n "$SERVER_PORT" ]] && printf_yellow "Password: changeme"
+  [[ -n "$SERVER_PORT" ]] && printf_yellow "Email: npm@npmlite.com"
+  [[ -n "$SERVER_PORT" ]] && printf_yellow "Password: npmlite"
   [[ -z "$SERVER_PORT" ]] && printf_yellow "This container does not have a web interface"
 else
   printf_error "Something seems to have gone wrong with the install"
