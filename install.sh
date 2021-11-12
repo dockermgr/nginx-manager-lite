@@ -202,7 +202,7 @@ if docker ps -a | grep -qs "$APPNAME"; then
   [[ -n "$SERVER_PORT" ]] && printf_blue "Service is running on: $SERVER_IP:$SERVER_PORT"
   [[ -n "$SERVER_PORT" ]] && printf_blue "HTTP is available at: http://$SERVER_HOST:$SERVER_PORT"
   [[ -n "$SERVER_PORT" ]] && printf_blue "HTTPS is available at: https://$SERVER_HOST:$SERVER_PORT_OTHER"
-  [[ -n "$SERVER_PORT" ]] && printf_blue "Admin is available at: http://$SERVER_HOST:$SERVER_PORT_ADMIN"
+  [[ -n "$SERVER_PORT" ]] && printf_blue "Admin is available at: http://$SERVER_HOST:$SERVER_PORT_INT"
   [[ -n "$SERVER_PORT" ]] && printf_yellow "Email: npm@npmlite.com"
   [[ -n "$SERVER_PORT" ]] && printf_yellow "Password: npmlite"
   [[ -z "$SERVER_PORT" ]] && printf_yellow "This container does not have a web interface"
