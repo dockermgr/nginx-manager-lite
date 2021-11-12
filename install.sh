@@ -159,14 +159,6 @@ else
     "$HUB_URL" &>/dev/null
 fi
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# Copy over data files - keep the same stucture as -v dataDir/mnt:/mount
-if [[ -d "$INSTDIR/dataDir" ]] && [[ ! -f "$DATADIR/.installed" ]]; then
-  printf_blue "Copying files to $DATADIR"
-  cp -Rf "$INSTDIR/dataDir/." "$DATADIR/"
-  touch "$DATADIR/.installed"
-  find "$DATADIR" -name ".gitkeep" -type f -exec rm -rf {} \; &>/dev/null
-fi
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Install nginx proxy
 if cmd_exists nginx; then
   if [[ ! -f "/etc/nginx/vhosts.d/$APPNAME.conf" ]] && [[ -f "$INSTDIR/nginx/proxy.conf" ]]; then
