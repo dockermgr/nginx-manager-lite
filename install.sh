@@ -153,7 +153,7 @@ else
     --privileged \
     -e TZ="$SERVER_TIMEZONE" \
     -v "$DATADIR/data":/data \
-    -v "$DATADIR/config/manager/production.json":/data/npmlite_config/config.json \
+    -v "$DATADIR/config/manager":/data/npmlite_config \
     -v "$DATADIR/letsencrypt":/etc/letsencrypt \
     -p $SERVER_PORT:$SERVER_PORT_INT \
     -p $SERVER_PORT_OTHER:$SERVER_PORT_OTHER_INT \
